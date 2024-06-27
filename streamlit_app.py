@@ -60,15 +60,17 @@ def tag_sim(str1,str2):
 
 end1 = time()
 if anime_watched not in Ratings.index:
-    #print(f'\nLooks like the Database does not have anime with this exact title: {anime_watched}.This list shows the closest matches.')
+    print(f'\nLooks like the Database does not have anime with this exact title: {anime_watched}.This list shows the closest matches.')
     matches = anime['Name'].apply(lambda x: cosine_sim(anime_watched,x))
     matches.index = anime['Name']
     matches = matches.sort_values(ascending=False)
     matches = matches.to_frame()
-    match_list = list(enumerate(matches.head().index))
+    match_list = list(enumerate(matches.index))
     match_list_dict = dict(match_list)
-    #choice = int(input('\nChoose a number from 0 to 4 to confirm which anime you meant:'))
-    anime_watched =match_list_dict[0]
+    for i, j in match_list:
+        st.text(f'{i}.{j}')
+    choice = st.number_input(f'\nChoose a number from 0 to {len(match_list)-1} to confirm which anime you meant:'))
+    anime_watched =match_list_dict[choice]
 
 st.text('How would you like your recommendations: \n 1. Similar rated and by a similar Studio \n 2. Similar Genre \n 3. Both \n')
 choice = int(st.text_input(label=' Enter the serial number of your choice '))
