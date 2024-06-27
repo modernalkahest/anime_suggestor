@@ -65,7 +65,7 @@ if anime_watched not in Ratings.index:
     matches.index = anime['Name']
     matches = matches.sort_values(ascending=False)
     matches = matches.to_frame()
-    match_list = list(enumerate(matches.index))
+    match_list = list(enumerate(matches.head().index))
     match_list_dict = dict(match_list)
     for i, j in match_list:
         st.text(f'{i}.{j}')
