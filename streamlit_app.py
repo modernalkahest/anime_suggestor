@@ -69,7 +69,7 @@ if anime_watched not in Ratings.index:
     match_list_dict = dict(match_list)
     for i, j in match_list:
         st.text(f'{i}.{j}')
-    choice = st.number_input(f'\nChoose a number from 0 to {len(match_list)-1} to confirm which anime you meant:'))
+    choice = st.number_input(f'\nChoose a number from 0 to {len(match_list)-1} to confirm which anime you meant:', min_value=0,max_value=len(match_list)-1)
     anime_watched =match_list_dict[choice]
 
 st.text('How would you like your recommendations: \n 1. Similar rated and by a similar Studio \n 2. Similar Genre \n 3. Both \n')
