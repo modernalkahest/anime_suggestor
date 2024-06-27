@@ -7,7 +7,7 @@ forums](https://discuss.streamlit.io).
 
 In the meantime, below is an example of what you can do with just a few lines of code:
 """
-
+$ pip install -r requirements.txt
 import pandas as pd
 import numpy as np
 from warnings import filterwarnings
